@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Colors — Semantic Tokens</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); font-family: var(--font-body); }
+  table { width: 100%; border-collapse: collapse; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
+  tr:last-child td { border-bottom: 0; }
+  .dot { display: inline-block; width: 18px; height: 18px; border-radius: 4px; vertical-align: middle; margin-right: 10px; border: 1px solid rgb(0 0 0 / 0.06); }
+  .var { font-weight: 600; color: var(--fg-strong); }
+  .role { color: var(--fg-muted); font-size: 12px; }
+  .hex { color: var(--fg-muted); font-size: 11px; letter-spacing: 0.04em; }
+</style></head><body>
+<table>
+  <tr><td><span class="dot" style="background:#F8F7F5"></span><span class="var">--bg</span></td><td class="role">App canvas</td><td class="hex">#F8F7F5</td></tr>
+  <tr><td><span class="dot" style="background:#FFFFFF"></span><span class="var">--bg-elevated</span></td><td class="role">Cards, sidebar</td><td class="hex">#FFFFFF</td></tr>
+  <tr><td><span class="dot" style="background:#013121"></span><span class="var">--fg-strong</span></td><td class="role">Headlines</td><td class="hex">#013121</td></tr>
+  <tr><td><span class="dot" style="background:#32312E"></span><span class="var">--fg</span></td><td class="role">Body text</td><td class="hex">#32312E</td></tr>
+  <tr><td><span class="dot" style="background:#1C6E42"></span><span class="var">--accent</span></td><td class="role">Primary action</td><td class="hex">#1C6E42</td></tr>
+  <tr><td><span class="dot" style="background:#C4A265"></span><span class="var">--fg-gold</span></td><td class="role">Eyebrow / rule</td><td class="hex">#C4A265</td></tr>
+  <tr><td><span class="dot" style="background:#968F8E"></span><span class="var">--fg-muted</span></td><td class="role">Meta, dividers</td><td class="hex">#968F8E</td></tr>
+  <tr><td><span class="dot" style="background:#E8E0D0"></span><span class="var">--border</span></td><td class="role">Card borders</td><td class="hex">#E8E0D0</td></tr>
+</table>
+</body></html>

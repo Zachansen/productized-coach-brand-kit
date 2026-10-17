@@ -1,0 +1,125 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Motion — Specimens</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .frame { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 700px; }
+  .span2 { grid-column: 1 / -1; }
+  .card {
+    background: #FFF; border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .stage {
+    height: 130px; padding: 14px;
+    background: var(--bg-cream);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; border-bottom: 1px solid var(--border);
+  }
+  .meta { padding: 12px 14px; }
+  .name { font: 700 13px/1.2 var(--font-heading); color: var(--bg-dark); }
+  .spec {
+    font: 500 11px/1.3 var(--font-mono);
+    color: var(--color-gray-500); margin-top: 4px;
+  }
+  .desc { font: 400 12px/1.4 var(--font-body); color: var(--color-gray-500); margin-top: 6px; }
+
+  /* 1. Reveal — gold rule draws in */
+  .demo-reveal {
+    width: 80%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    transform-origin: left;
+    animation: drawIn 2.4s cubic-bezier(.6,.05,.2,1) infinite;
+  }
+  @keyframes drawIn {
+    0%   { transform: scaleX(0); opacity: 0; }
+    20%  { opacity: 1; }
+    60%  { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(1); opacity: 0; }
+  }
+
+  /* 2. Lift — card hovers into elevation */
+  .demo-lift {
+    width: 90px; height: 60px; border-radius: 9px;
+    background: #FFF; border: 1px solid var(--border-input);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    animation: lift 2.4s cubic-bezier(.4,0,.2,1) infinite;
+  }
+  @keyframes lift {
+    0%, 100% { transform: translateY(0); box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    50%      { transform: translateY(-6px); box-shadow: 0 12px 24px -8px rgba(50,49,46,0.22); }
+  }
+
+  /* 3. Pulse — accent dot */
+  .demo-pulse {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--color-gold);
+    position: relative;
+  }
+  .demo-pulse::before, .demo-pulse::after {
+    content:""; position: absolute; inset: -3px;
+    border-radius: 50%; border: 2px solid var(--color-gold);
+    animation: pulse 2s cubic-bezier(.5,0,.3,1) infinite;
+  }
+  .demo-pulse::after { animation-delay: .9s; }
+  @keyframes pulse {
+    0%   { transform: scale(0.6); opacity: 0.9; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+
+  /* 4. Marquee — subtle scrolling kicker */
+  .demo-marquee {
+    width: 100%; overflow: hidden; white-space: nowrap;
+    font: 600 11px/1 var(--font-body); letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--color-gold);
+  }
+  .demo-marquee span {
+    display: inline-block; padding-right: 32px;
+    animation: marquee 14s linear infinite;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style></head><body>
+
+<div class="frame">
+
+  <div class="card">
+    <div class="stage"><div class="demo-reveal"></div></div>
+    <div class="meta">
+      <div class="name">Reveal</div>
+      <div class="spec">scaleX 0&rarr;1 · 600ms · cubic-bezier(.6,.05,.2,1)</div>
+      <div class="desc">For section openers and gold rules. The line traces in left-to-right.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stage"><div class="demo-lift"></div></div>
+    <div class="meta">
+      <div class="name">Lift</div>
+      <div class="spec">translateY 0 → -6px · 200ms · ease-out</div>
+      <div class="desc">For cards on hover. Pair with shadow-md to deepen the elevation.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stage"><div class="demo-pulse"></div></div>
+    <div class="meta">
+      <div class="name">Pulse</div>
+      <div class="spec">scale 0.6 → 2.6 · 1000ms · ease-out · loop</div>
+      <div class="desc">Live indicator on streaming AI output and live calls.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stage" style="overflow:hidden">
+      <div class="demo-marquee">
+        <span>Productized · Right-fit · Belief-engineered · Cash-flow first · Productized · Right-fit · Belief-engineered · Cash-flow first ·&nbsp;</span>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="name">Kicker marquee</div>
+      <div class="spec">translateX 0 → -50% · 14s · linear · loop</div>
+      <div class="desc">For section labels &amp; eyebrows on landing pages. Subtle, not pushy.</div>
+    </div>
+  </div>
+
+</div>
+</body></html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Spacing — Radii &amp; Shadow</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); font-family: var(--font-body); }
+  .row { display: flex; gap: 16px; align-items: flex-end; }
+  .item { text-align: center; }
+  .box { background: #fff; border: 1px solid var(--border); width: 78px; height: 60px; box-shadow: var(--shadow-sm); }
+  .box.shadow-md { box-shadow: var(--shadow-md); }
+  .lbl { font-size: 11px; color: var(--fg-muted); margin-top: 8px; letter-spacing: 0.04em; }
+  .group { display: flex; flex-direction: column; gap: 14px; }
+  .heading { font: 700 11px var(--font-body); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--fg-gold); }
+</style></head><body>
+<div class="group">
+  <div class="heading">Radii</div>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:6px"></div><div class="lbl">sm · 6</div></div>
+    <div class="item"><div class="box" style="border-radius:12px"></div><div class="lbl">lg · 12</div></div>
+    <div class="item"><div class="box" style="border-radius:16px"></div><div class="lbl">xl · 16</div></div>
+    <div class="item"><div class="box" style="border-radius:20px"></div><div class="lbl">2xl · 20</div></div>
+    <div class="item"><div class="box" style="border-radius:9999px"></div><div class="lbl">pill</div></div>
+  </div>
+  <div class="heading" style="margin-top:6px">Shadows</div>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:16px"></div><div class="lbl">sm · resting</div></div>
+    <div class="item"><div class="box shadow-md" style="border-radius:16px"></div><div class="lbl">md · hover</div></div>
+  </div>
+</div>
+</body></html>

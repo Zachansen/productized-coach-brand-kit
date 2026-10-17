@@ -1,0 +1,108 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Brand — Ornaments</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px 24px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .frame { max-width: 620px; }
+  .row { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+  .row:last-child { margin-bottom: 0; }
+  .label {
+    flex: 0 0 110px;
+    font: 600 11px/1.2 var(--font-body);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-gray-500);
+  }
+  .demo { flex: 1; min-width: 0; }
+
+  /* The original gold rule */
+  .rule-gold { height: 1px; background: linear-gradient(90deg, transparent, var(--color-gold), transparent); }
+
+  /* Double rule — vintage "═" feel */
+  .rule-double {
+    border: 0; height: 4px;
+    border-top: 1px solid var(--color-gold);
+    border-bottom: 1px solid var(--color-gold);
+    background: transparent;
+  }
+
+  /* Asterism: three asterisks centered, in serif */
+  .asterism {
+    text-align: center;
+    font: 400 18px/1 var(--font-heading);
+    color: var(--color-gold);
+    letter-spacing: 0.4em;
+  }
+  .asterism .a { display: inline-block; transform: translateY(-2px); }
+
+  /* Section opener: gold serif initial cap */
+  .initial-cap p {
+    font: 400 16px/1.5 var(--font-body);
+    color: var(--fg-strong);
+    margin: 0;
+    text-indent: 0;
+  }
+  .initial-cap p::first-letter {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 3em;
+    line-height: 0.85;
+    float: left;
+    margin: 4px 8px 0 0;
+    color: var(--bg-dark);
+  }
+  .initial-cap p::first-line { font-variant: small-caps; letter-spacing: 0.04em; }
+
+  /* Diamond divider */
+  .diamond-row {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--color-gold);
+  }
+  .diamond-row .line {
+    flex: 1; height: 1px; background: var(--color-gold); opacity: 0.5;
+  }
+  .diamond-row .d {
+    width: 6px; height: 6px;
+    background: var(--color-gold);
+    transform: rotate(45deg);
+  }
+</style></head><body>
+
+<div class="frame">
+
+  <div class="row">
+    <div class="label">Gold rule</div>
+    <div class="demo"><hr class="rule-gold"></div>
+  </div>
+
+  <div class="row">
+    <div class="label">Double rule</div>
+    <div class="demo"><hr class="rule-double"></div>
+  </div>
+
+  <div class="row">
+    <div class="label">Diamond</div>
+    <div class="demo">
+      <div class="diamond-row">
+        <span class="line"></span>
+        <span class="d"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="label">Asterism</div>
+    <div class="demo">
+      <div class="asterism"><span class="a">*</span><span class="a">*</span><span class="a">*</span></div>
+    </div>
+  </div>
+
+  <div class="row" style="align-items:flex-start">
+    <div class="label" style="margin-top:6px">Initial cap</div>
+    <div class="demo initial-cap">
+      <p>Build the offer your buyer can't unsee. Start with a single right-fit person, write the page they'd read, and ship it before Friday.</p>
+    </div>
+  </div>
+
+</div>
+
+</body></html>

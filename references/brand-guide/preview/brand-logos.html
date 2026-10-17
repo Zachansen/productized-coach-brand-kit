@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Brand — Logos</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-body); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tile { display: flex; align-items: center; justify-content: center; height: 120px; border-radius: 12px; border: 1px solid var(--border); }
+  .tile.light { background: #fff; }
+  .tile.cream { background: var(--bg); }
+  .tile.dark  { background: var(--bg-dark); }
+  .tile img { max-height: 64px; max-width: 80%; }
+  .lbl { margin-top: 6px; font-size: 11px; color: var(--fg-muted); letter-spacing: 0.04em; }
+  .item { text-align: center; }
+</style></head><body>
+<div class="grid">
+  <div class="item"><div class="tile light"><img src="../assets/logos/full-dark-green.svg" alt=""></div><div class="lbl">Full · Dark Green on White</div></div>
+  <div class="item"><div class="tile dark"><img src="../assets/logos/full-white.svg" alt=""></div><div class="lbl">Full · White on Dark</div></div>
+  <div class="item"><div class="tile cream"><img src="../assets/logos/emblem-dark-green.svg" alt="" style="max-height:72px"></div><div class="lbl">Emblem · Dark Green</div></div>
+  <div class="item"><div class="tile dark"><img src="../assets/logos/emblem-white.svg" alt="" style="max-height:72px"></div><div class="lbl">Emblem · White on Dark</div></div>
+</div>
+</body></html>

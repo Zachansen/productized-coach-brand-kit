@@ -1,0 +1,88 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Type — Body &amp; Eyebrow</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 28px 32px; background: var(--bg); color: var(--fg-strong); }
+  .frame { max-width: 620px; }
+
+  /* All meta labels are full-strength ink, not muted. */
+  .meta {
+    font: 600 11px/1 var(--font-body);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--fg-strong);
+    margin: 0 0 8px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .meta::after {
+    content: ''; flex: 1; height: 1.5px;
+    background: var(--color-gold);
+    border-radius: 2px;
+  }
+
+  .specimen + .specimen { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.07); }
+
+  /* Body sizes — all use full ink color, generous line-height. */
+  .body-16 { font: 400 16px/1.6 var(--font-body); color: var(--fg-strong); }
+  .body-17 { font: 400 17px/1.6 var(--font-body); color: var(--fg-strong); }
+  .body-18 { font: 400 18px/1.65 var(--font-body); color: var(--fg-strong); }
+
+  .body-16 b, .body-17 b, .body-18 b { font-weight: 600; }
+  .body-16 em, .body-17 em, .body-18 em {
+    font-style: italic; color: var(--bg-dark);
+  }
+
+  /* Eyebrow — bolder, with gold accent dot */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 700 12px/1 var(--font-body);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bg-dark);
+  }
+  .eyebrow .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--color-gold);
+  }
+
+  .eyebrow-row { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  /* Lead paragraph — first paragraph that introduces a section */
+  .lead {
+    font: 500 19px/1.5 var(--font-body);
+    color: var(--bg-dark);
+    margin: 6px 0 0;
+  }
+</style></head><body>
+
+<div class="frame">
+
+  <div class="specimen">
+    <p class="meta">Body · 18 px · recommended</p>
+    <p class="body-18">AI-powered tools for coaches and consultants who build <b>productized offers</b>. Craft your North Star Promise, write copy in your voice, and think out loud with a coach — all in one place.</p>
+  </div>
+
+  <div class="specimen">
+    <p class="meta">Body · 17 px</p>
+    <p class="body-17">AI-powered tools for coaches and consultants who build <b>productized offers</b>. Craft your North Star Promise, write copy in your voice, and think out loud with a coach — all in one place.</p>
+  </div>
+
+  <div class="specimen">
+    <p class="meta">Body · 16 px · compact</p>
+    <p class="body-16">AI-powered tools for coaches and consultants who build <b>productized offers</b>. Craft your North Star Promise, write copy in your voice, and think out loud with a coach — all in one place.</p>
+  </div>
+
+  <div class="specimen">
+    <p class="meta">Lead paragraph · 19 px · italic-friendly</p>
+    <p class="lead">A library of AI tools <em>that sound like you</em> — for the parts of running a coaching business that shouldn't take all week.</p>
+  </div>
+
+  <div class="specimen">
+    <p class="meta">Eyebrow · 12 px · gold dot</p>
+    <div class="eyebrow-row">
+      <span class="eyebrow"><span class="dot"></span>Foundation</span>
+      <span class="eyebrow"><span class="dot"></span>Step 1 of 4</span>
+      <span class="eyebrow"><span class="dot"></span>Strategy</span>
+    </div>
+  </div>
+
+</div>
+
+</body></html>

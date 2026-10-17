@@ -1,0 +1,173 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Component — Tool Cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 16px 12px; background: #fff; font-family: var(--font-body); color: var(--fg); }
+  .frame { max-width: 660px; }
+  .group-label {
+    font: 600 11px/1 var(--font-body); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--fg-muted);
+    padding: 0 8px 6px;
+  }
+  .stack { display: flex; flex-direction: column; gap: 1px; }
+
+  /* Notion/Capacities row: no shadow, no per-row border, just a hover wash. */
+  .row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.08s ease-out;
+    text-decoration: none;
+    color: inherit;
+  }
+  .row:hover { background: rgba(36, 55, 46, 0.045); }
+  .row:active { background: rgba(36, 55, 46, 0.08); }
+
+  /* Capacities-style tile: soft pastel bg + tonal-darker glyph (NOT white). */
+  .tile {
+    width: 28px; height: 28px;
+    flex: 0 0 28px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--tile-bg);
+    color: var(--tile-fg);
+  }
+  .tile svg { width: 17px; height: 17px; }
+
+  .t-gold   { --tile-bg: #F4E8C8; --tile-fg: #8A6D1E; }
+  .t-green  { --tile-bg: #DCEAE0; --tile-fg: #2E5743; }
+  .t-spring { --tile-bg: #DCEDE2; --tile-fg: #3F7A56; }
+  .t-rose   { --tile-bg: #F4DEDA; --tile-fg: #9A4C42; }
+  .t-violet { --tile-bg: #E5E0EE; --tile-fg: #5C4F7C; }
+  .t-clay   { --tile-bg: #F1DECF; --tile-fg: #8A4F26; }
+  .t-sky    { --tile-bg: #DDE6EC; --tile-fg: #466478; }
+  .t-gray   { --tile-bg: #ECECEA; --tile-fg: #6B6B66; }
+
+  .body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .name {
+    font-size: 14px; font-weight: 500; color: var(--fg-strong);
+    line-height: 1.35;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .desc {
+    font-size: 12.5px; color: var(--fg-muted);
+    line-height: 1.35;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .meta {
+    font-size: 12px; color: var(--fg-muted);
+    flex: 0 0 auto;
+  }
+
+  /* Featured / DNA row keeps a hint of treatment but stays in the same family. */
+  .row.dna { background: rgba(199, 168, 73, 0.07); }
+  .row.dna:hover { background: rgba(199, 168, 73, 0.13); }
+  .row.dna .tile { box-shadow: 0 0 0 1.5px rgba(199, 168, 73, 0.35); }
+
+  /* Section divider — Notion-flavored hairline */
+  .divider { height: 1px; background: rgba(0,0,0,0.06); margin: 14px 8px 10px; }
+</style></head><body>
+<div class="frame">
+
+  <div class="group-label">Pinned</div>
+  <div class="stack">
+    <a class="row dna">
+      <span class="tile t-gold" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 15c6.667-6 13.333 0 20-6"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/><path d="m17 6-2.5-2.5"/><path d="m14 8-1-1"/><path d="m7 18 2.5 2.5"/><path d="m10 16 1 1"/><path d="m22 9-3 3"/><path d="m5 12-3 3"/>
+        </svg>
+      </span>
+      <div class="body">
+        <span class="name">Business DNA</span>
+        <span class="desc">Update your business foundation</span>
+      </div>
+      <span class="meta">Edit</span>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="group-label">Tools</div>
+  <div class="stack">
+
+    <a class="row">
+      <span class="tile t-violet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><polygon points="15 8 13 13 8 15 10 10" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <div class="body">
+        <span class="name">AI Zac</span>
+        <span class="desc">Strategic coach for productized businesses</span>
+      </div>
+      <span class="meta">Strategy</span>
+    </a>
+
+    <a class="row">
+      <span class="tile t-rose" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15.7 4.3a2 2 0 0 1 2.8 2.8L7.5 18.2 3 19.5l1.3-4.5z"/><path d="m13 6 4 4"/>
+        </svg>
+      </span>
+      <div class="body">
+        <span class="name">Copy Studio</span>
+        <span class="desc">Emails, ads, headlines, posts in your voice</span>
+      </div>
+      <span class="meta">Content</span>
+    </a>
+
+    <a class="row">
+      <span class="tile t-clay" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v7"/><path d="m4.5 10.5 1.4 1.4"/><path d="m19.5 10.5-1.4 1.4"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="M2 22h20"/>
+        </svg>
+      </span>
+      <div class="body">
+        <span class="name">Morning Routine</span>
+        <span class="desc">Start your day with focus and clarity</span>
+      </div>
+      <span class="meta">Mindset</span>
+    </a>
+
+    <a class="row">
+      <span class="tile t-sky" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M8 14h2"/>
+        </svg>
+      </span>
+      <div class="body">
+        <span class="name">Offer Architect</span>
+        <span class="desc">Design productized offers your buyers want</span>
+      </div>
+      <span class="meta">Offers</span>
+    </a>
+
+    <a class="row">
+      <span class="tile t-spring" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </span>
+      <div class="body">
+        <span class="name">Reflection</span>
+        <span class="desc">Think out loud with a thinking partner</span>
+      </div>
+      <span class="meta">Mindset</span>
+    </a>
+
+    <a class="row">
+      <span class="tile t-green" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </span>
+      <div class="body">
+        <span class="name">Audience Builder</span>
+        <span class="desc">Find and define your right-fit clients</span>
+      </div>
+      <span class="meta">Strategy</span>
+    </a>
+
+  </div>
+</div>
+</body></html>

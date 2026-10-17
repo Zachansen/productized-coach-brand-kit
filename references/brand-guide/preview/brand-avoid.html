@@ -1,0 +1,150 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Brand — Avoid</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px 24px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .frame { max-width: 660px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .item {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: #FFF;
+    display: flex; flex-direction: column;
+  }
+  .stage {
+    height: 110px; padding: 14px;
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .stage::after {
+    content: "✕"; position: absolute; top: 8px; right: 10px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--color-error); color: #FFF;
+    display: flex; align-items: center; justify-content: center;
+    font: 700 11px/1 var(--font-body);
+  }
+  .meta { padding: 11px 14px; }
+  .why  { font: 700 12px/1.2 var(--font-heading); color: var(--bg-dark); }
+  .desc { font: 400 11.5px/1.4 var(--font-body); color: var(--color-gray-500); margin-top: 4px; }
+
+  /* 1. Neon gradient background */
+  .bad-gradient {
+    width: 100%; height: 100%; border-radius: 8px;
+    background: linear-gradient(135deg, #FF6EC7 0%, #7873F5 50%, #4ADEDE 100%);
+  }
+
+  /* 2. Emoji bullet list */
+  .bad-emoji {
+    font: 500 12.5px/1.6 var(--font-body); color: var(--bg-dark);
+    margin: 0; padding: 0; list-style: none;
+  }
+  .bad-emoji li::before { content: "🚀 "; }
+
+  /* 3. Cliché left-bar accent card */
+  .bad-leftbar {
+    width: 75%;
+    background: #FFF;
+    border-radius: 12px;
+    border-left: 5px solid #6366F1;
+    padding: 10px 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  }
+  .bad-leftbar h5 { margin: 0; font: 700 12px/1.2 var(--font-body); }
+  .bad-leftbar p  { margin: 3px 0 0; font: 400 10.5px/1.3 var(--font-body); color: #666; }
+
+  /* 4. Stretched/warped logo */
+  .bad-logo {
+    background: var(--bg-dark); color: var(--fg-gold);
+    font: 700 22px/1 var(--font-heading);
+    letter-spacing: 0.04em;
+    padding: 8px 18px;
+    border-radius: 6px;
+    transform: scaleX(1.6) scaleY(0.7);
+  }
+
+  /* 5. Centered all-caps long body */
+  .bad-caps {
+    text-align: center;
+    font: 600 10.5px/1.4 var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bg-dark);
+    max-width: 90%;
+  }
+
+  /* 6. Generic Inter / system stack heading */
+  .bad-inter {
+    font: 700 22px/1.1 system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
+    color: var(--bg-dark);
+  }
+</style></head><body>
+
+<div class="frame">
+
+  <div class="item">
+    <div class="stage"><div class="bad-gradient"></div></div>
+    <div class="meta">
+      <div class="why">No neon gradients</div>
+      <div class="desc">Cream + jet + gold. Backgrounds stay quiet so the words can do the work.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="stage">
+      <ul class="bad-emoji">
+        <li>Build the offer</li>
+        <li>Find right-fit buyers</li>
+        <li>Ship the page</li>
+      </ul>
+    </div>
+    <div class="meta">
+      <div class="why">No emoji bullets</div>
+      <div class="desc">The brand is editorial. Use a gold dot, en-dash, or numbered serif initials instead.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="stage" style="background: var(--bg-cream)">
+      <div class="bad-leftbar">
+        <h5>Tip</h5>
+        <p>Always start with a right-fit avatar.</p>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="why">No left-bar accent cards</div>
+      <div class="desc">It's the most overused AI-generated layout. Use a top gold-rule + serif label instead.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="stage" style="background: var(--bg-cream)">
+      <div class="bad-logo">ZACH</div>
+    </div>
+    <div class="meta">
+      <div class="why">Don't stretch the wordmark</div>
+      <div class="desc">Keep proportions locked. Resize uniformly &mdash; never scaleX or scaleY independently.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="stage">
+      <div class="bad-caps">A productized offer is the offer your right-fit buyer cannot unsee, anchored to a promise they already believe.</div>
+    </div>
+    <div class="meta">
+      <div class="why">No long all-caps body</div>
+      <div class="desc">Caps belong in eyebrows, not paragraphs. Sentence case, serif-led, for anything ≥ 12 words.</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="stage">
+      <div class="bad-inter">Build your<br>productized offer</div>
+    </div>
+    <div class="meta">
+      <div class="why">Not Inter or system-ui</div>
+      <div class="desc">Headings live in Libre Baskerville. The serif is the brand &mdash; never substitute it.</div>
+    </div>
+  </div>
+
+</div>
+</body></html>

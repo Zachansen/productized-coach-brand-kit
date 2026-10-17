@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Colors — Gray Ladder</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; max-width: 660px; }
+  .swatch { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 64px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
+  .name { font: 600 11px/1.2 var(--font-body); letter-spacing: 0.04em; }
+  .hex { font: 400 10.5px/1 var(--font-mono); color: var(--fg-muted); }
+  .role { font: 400 11px/1.3 var(--font-body); color: var(--color-gray-500); }
+</style></head><body>
+<div class="grid">
+  <div class="swatch"><div class="chip" style="background:#F7F7F6"></div><div class="name">Gray 50</div><div class="hex">#F7F7F6</div><div class="role">Subtle surface</div></div>
+  <div class="swatch"><div class="chip" style="background:#ECECEA"></div><div class="name">Gray 100</div><div class="hex">#ECECEA</div><div class="role">Hairline border</div></div>
+  <div class="swatch"><div class="chip" style="background:#DCDCD8"></div><div class="name">Gray 200</div><div class="hex">#DCDCD8</div><div class="role">Divider · disabled</div></div>
+  <div class="swatch"><div class="chip" style="background:#BFBEB9"></div><div class="name">Gray 300</div><div class="hex">#BFBEB9</div><div class="role">Placeholder · mute icon</div></div>
+  <div class="swatch"><div class="chip" style="background:#8E8C86"></div><div class="name">Gray 400</div><div class="hex">#8E8C86</div><div class="role">Secondary meta</div></div>
+  <div class="swatch"><div class="chip" style="background:#6B6963"></div><div class="name">Gray 500</div><div class="hex">#6B6963</div><div class="role">Tertiary text</div></div>
+  <div class="swatch"><div class="chip" style="background:#3F3D38"></div><div class="name">Gray 700</div><div class="hex">#3F3D38</div><div class="role">Utility heading ink</div></div>
+</div>
+</body></html>

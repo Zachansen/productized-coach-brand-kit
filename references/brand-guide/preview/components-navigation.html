@@ -1,0 +1,221 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Components — Navigation (menu, tabs, avatars, tooltip, progress)</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .frame { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 700px; }
+  .label {
+    font: 600 10px/1 var(--font-body);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-gray-500); margin-bottom: 8px;
+  }
+  .span2 { grid-column: 1 / -1; }
+
+  /* DROPDOWN MENU ------------------------------------------------------- */
+  .menu-stage {
+    height: 200px; padding: 16px;
+    background: var(--bg-cream); border: 1px solid var(--border);
+    border-radius: 12px; position: relative;
+  }
+  .trigger {
+    display: inline-flex; align-items: center; gap: 6px;
+    font: 600 12.5px/1 var(--font-body);
+    background: #FFF; border: 1px solid var(--border-input);
+    padding: 9px 12px; border-radius: 7px;
+    color: var(--bg-dark); cursor: pointer;
+  }
+  .menu {
+    position: absolute; top: 56px; left: 16px;
+    width: 220px; background: #FFF;
+    border: 1px solid var(--border); border-radius: 10px;
+    box-shadow: 0 10px 24px -6px rgba(50,49,46,0.18);
+    padding: 6px; font-size: 12.5px;
+  }
+  .menu .item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 6px;
+    color: var(--bg-dark); cursor: pointer;
+  }
+  .menu .item:hover { background: var(--bg-cream); }
+  .menu .item .key { margin-left: auto; color: var(--color-gray-400); font-family: var(--font-mono); font-size: 10.5px; }
+  .menu .item.danger { color: var(--color-error); }
+  .menu hr { border: 0; border-top: 1px solid var(--color-gray-100); margin: 5px 0; }
+
+  /* TABS ---------------------------------------------------------------- */
+  .tabs {
+    display: flex; gap: 0; border-bottom: 1px solid var(--border);
+  }
+  .tab {
+    font: 600 13px/1 var(--font-body);
+    padding: 10px 14px; color: var(--color-gray-400);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .tab.active { color: var(--bg-dark); border-bottom-color: var(--color-gold); }
+
+  /* AVATARS ------------------------------------------------------------- */
+  .avatars { display: flex; align-items: center; gap: 10px; }
+  .av {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font: 700 13px/1 var(--font-heading);
+    color: #FFF;
+    border: 2px solid #FFF; box-shadow: 0 0 0 1px var(--border);
+  }
+  .av.a { background:#5C7C68; }
+  .av.b { background:#7A6020; }
+  .av.c { background:#3F3D38; }
+  .av.d { background: var(--color-gold); color: var(--bg-dark); }
+  .av-stack { display: flex; }
+  .av-stack .av { margin-left: -10px; }
+  .av-stack .av:first-child { margin-left: 0; }
+
+  /* TOOLTIP ------------------------------------------------------------- */
+  .tip-stage {
+    height: 90px; padding: 16px;
+    background: var(--bg-cream); border: 1px solid var(--border);
+    border-radius: 12px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tip-target {
+    font: 500 12px/1 var(--font-body);
+    padding: 8px 12px; border-radius: 6px;
+    background: #FFF; border: 1px solid var(--border-input);
+  }
+  .tooltip {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    background: var(--bg-dark); color: var(--fg-on-dark);
+    font: 500 11px/1.3 var(--font-body);
+    padding: 6px 9px; border-radius: 5px;
+    white-space: nowrap;
+  }
+  .tooltip::after {
+    content: ""; position: absolute; left: 50%; bottom: -4px;
+    transform: translateX(-50%) rotate(45deg);
+    width: 7px; height: 7px; background: var(--bg-dark);
+  }
+
+  /* PROGRESS ------------------------------------------------------------ */
+  .progress { display: flex; flex-direction: column; gap: 12px; }
+  .pbar { height: 6px; background: var(--color-gray-100); border-radius: 99px; overflow: hidden; }
+  .pbar > i { display: block; height: 100%; background: var(--color-gold); }
+  .pmeta { display: flex; justify-content: space-between; font: 500 11.5px/1 var(--font-body); color: var(--color-gray-500); margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .pmeta b { color: var(--bg-dark); font-weight: 600; }
+
+  /* STEPPER ------------------------------------------------------------- */
+  .stepper { display: flex; align-items: center; gap: 0; }
+  .step { display: flex; align-items: center; gap: 8px; flex: 1; }
+  .step .num {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font: 700 11px/1 var(--font-heading);
+    background: var(--color-gray-100); color: var(--color-gray-400);
+  }
+  .step.done .num { background: var(--color-success); color: #FFF; }
+  .step.now  .num { background: var(--bg-dark); color: var(--fg-on-dark); box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-gold) 35%, transparent); }
+  .step .lbl { font: 600 12px/1 var(--font-body); color: var(--color-gray-500); }
+  .step.done .lbl, .step.now .lbl { color: var(--bg-dark); }
+  .step .line { flex: 1; height: 1px; background: var(--color-gray-200); margin: 0 8px; }
+  .step.done .line { background: var(--color-success); }
+
+</style></head><body>
+
+<div class="frame">
+
+  <!-- DROPDOWN -->
+  <div class="span2">
+    <div class="label">Dropdown menu</div>
+    <div class="menu-stage">
+      <button class="trigger">
+        Offer actions
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="menu">
+        <div class="item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <span>Edit copy</span>
+          <span class="key">⌘E</span>
+        </div>
+        <div class="item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Duplicate</span>
+          <span class="key">⌘D</span>
+        </div>
+        <div class="item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <span>Share preview</span>
+        </div>
+        <hr>
+        <div class="item danger">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          <span>Archive offer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div>
+    <div class="label">Tabs</div>
+    <div class="tabs">
+      <div class="tab active">Promise</div>
+      <div class="tab">Audience</div>
+      <div class="tab">Mechanism</div>
+      <div class="tab">Pricing</div>
+    </div>
+  </div>
+
+  <!-- AVATARS -->
+  <div>
+    <div class="label">Avatars</div>
+    <div class="avatars">
+      <div class="av-stack">
+        <div class="av a">JM</div>
+        <div class="av b">RP</div>
+        <div class="av c">TS</div>
+        <div class="av d">+4</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOLTIP -->
+  <div>
+    <div class="label">Tooltip</div>
+    <div class="tip-stage">
+      <span class="tooltip">Right-fit avatar &middot; ⌘1</span>
+      <span class="tip-target">Audience</span>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div>
+    <div class="label">Progress</div>
+    <div class="progress">
+      <div>
+        <div class="pbar"><i style="width:68%"></i></div>
+        <div class="pmeta"><span>Offer build</span><span><b>68%</b> &middot; ~4 min left</span></div>
+      </div>
+      <div>
+        <div class="pbar"><i style="width:24%; background: var(--color-success);"></i></div>
+        <div class="pmeta"><span>Onboarding</span><span><b>3</b> of 12</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEPPER -->
+  <div class="span2">
+    <div class="label">Stepper</div>
+    <div class="stepper">
+      <div class="step done"><div class="num">✓</div><div class="lbl">Audience</div></div>
+      <div class="line" style="flex:1; height:1px; background: var(--color-success); margin: 0 8px;"></div>
+      <div class="step done"><div class="num">✓</div><div class="lbl">Promise</div></div>
+      <div class="line" style="flex:1; height:1px; background: var(--color-success); margin: 0 8px;"></div>
+      <div class="step now"><div class="num">3</div><div class="lbl">Mechanism</div></div>
+      <div class="line" style="flex:1; height:1px; background: var(--color-gray-200); margin: 0 8px;"></div>
+      <div class="step"><div class="num">4</div><div class="lbl">Pricing</div></div>
+      <div class="line" style="flex:1; height:1px; background: var(--color-gray-200); margin: 0 8px;"></div>
+      <div class="step"><div class="num">5</div><div class="lbl">Launch</div></div>
+    </div>
+  </div>
+
+</div>
+</body></html>

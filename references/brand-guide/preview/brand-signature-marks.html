@@ -1,0 +1,130 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Brand — Signature Marks</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 660px; }
+  .card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 12px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    text-align: center;
+  }
+  .mark {
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-dark);
+    color: var(--fg-gold);
+  }
+  .name { font: 700 12px/1.2 var(--font-heading); color: var(--fg-strong); }
+  .desc { font: 400 10.5px/1.3 var(--font-body); color: var(--color-gray-500); }
+</style></head><body>
+
+<div class="grid">
+
+  <!-- 1. Business DNA — twisting double-helix as ladder -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M12 4 C24 12, 16 28, 28 36"/>
+        <path d="M28 4 C16 12, 24 28, 12 36"/>
+        <line x1="14" y1="10" x2="26" y2="10"/>
+        <line x1="22" y1="20" x2="18" y2="20"/>
+        <line x1="14" y1="30" x2="26" y2="30"/>
+      </svg>
+    </div>
+    <div class="name">Business DNA</div>
+    <div class="desc">Twisted ladder</div>
+  </div>
+
+  <!-- 2. North Star Promise — compass-rose with star -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="20" r="14"/>
+        <polygon points="20,8 22,18 32,20 22,22 20,32 18,22 8,20 18,18" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+    <div class="name">North Star</div>
+    <div class="desc">Compass + star</div>
+  </div>
+
+  <!-- 3. Cash Cycle — orbit with coin -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <ellipse cx="20" cy="20" rx="15" ry="9"/>
+        <circle cx="20" cy="20" r="4" fill="currentColor"/>
+        <path d="M14 20 L18 20 M22 20 L26 20" stroke="var(--bg-dark)" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="name">Cash Cycle</div>
+    <div class="desc">Orbit + coin</div>
+  </div>
+
+  <!-- 4. Hell Island — flame on island -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 C24 12, 26 16, 24 20 C28 18, 28 24, 24 28 C26 24, 22 22, 20 26 C18 22, 14 24, 16 28 C12 24, 12 18, 16 20 C14 16, 16 12, 20 6 Z" fill="currentColor" stroke="none"/>
+        <path d="M8 32 Q20 36, 32 32"/>
+      </svg>
+    </div>
+    <div class="name">Hell Island</div>
+    <div class="desc">Flame + tide</div>
+  </div>
+
+  <!-- 5. AI Zac — geometric face profile -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="20" r="14"/>
+        <polygon points="22 12 18 20 12 22 16 16" fill="currentColor" stroke="none"/>
+        <circle cx="26" cy="14" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+    <div class="name">AI Zac</div>
+    <div class="desc">Compass needle</div>
+  </div>
+
+  <!-- 6. Copy Studio — quill nib + serif "C" -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M28 8 L32 12 L18 26 L14 26 L14 22 Z" fill="currentColor" stroke="none"/>
+        <path d="M14 32 L26 32"/>
+        <path d="M10 26 L14 26 L14 22"/>
+      </svg>
+    </div>
+    <div class="name">Copy Studio</div>
+    <div class="desc">Quill nib</div>
+  </div>
+
+  <!-- 7. Productized Offer — stacked bricks/blocks -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+        <rect x="8" y="22" width="10" height="10" fill="currentColor" stroke="none"/>
+        <rect x="22" y="22" width="10" height="10"/>
+        <rect x="15" y="10" width="10" height="10"/>
+      </svg>
+    </div>
+    <div class="name">Productized Offer</div>
+    <div class="desc">Stacked blocks</div>
+  </div>
+
+  <!-- 8. Belief Engineering — gear w/ thought bubble -->
+  <div class="card">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="20" r="6"/>
+        <path d="M20 6 V12 M20 28 V34 M6 20 H12 M28 20 H34 M10 10 L14 14 M26 26 L30 30 M30 10 L26 14 M14 26 L10 30"/>
+      </svg>
+    </div>
+    <div class="name">Belief Engineering</div>
+    <div class="desc">Mind-gear</div>
+  </div>
+
+</div>
+
+</body></html>

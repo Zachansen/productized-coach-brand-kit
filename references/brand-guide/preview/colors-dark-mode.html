@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Colors — Dark Mode</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html { background: #0F1813; }
+  body { margin: 0; padding: 18px; background: #14201A; font-family: var(--font-body); color: #FAF6E8; }
+  .frame { max-width: 660px; }
+  .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 12px; }
+  .swatch { display: flex; flex-direction: column; gap: 4px; }
+  .chip { height: 50px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); }
+  .name { font: 600 10.5px/1.2 var(--font-body); color: #FAF6E8; }
+  .hex { font: 400 10px/1 var(--font-mono); color: #D8D2BE; }
+  /* Mock card */
+  .demo {
+    background: #1B2922; border: 1px solid #2A3A32;
+    border-radius: 14px; padding: 16px 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .demo .tile {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: #2A3A32; color: #D4BA85;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .demo .title { font: 700 16px/1.2 var(--font-heading); color: #FAF6E8; }
+  .demo .sub   { font: 500 13px/1.4 var(--font-body); color: #D8D2BE; margin-top: 2px; }
+  .rule { height: 1px; background: linear-gradient(90deg, transparent, #D4BA85, transparent); margin: 14px 0; }
+</style></head><body>
+<div class="frame">
+  <div class="row">
+    <div class="swatch"><div class="chip" style="background:#0A1612"></div><div class="name">bg-dark</div><div class="hex">#0A1612</div></div>
+    <div class="swatch"><div class="chip" style="background:#14201A"></div><div class="name">canvas</div><div class="hex">#14201A</div></div>
+    <div class="swatch"><div class="chip" style="background:#1B2922"></div><div class="name">elevated</div><div class="hex">#1B2922</div></div>
+    <div class="swatch"><div class="chip" style="background:#2A3A32"></div><div class="name">border</div><div class="hex">#2A3A32</div></div>
+    <div class="swatch"><div class="chip" style="background:#84C2A1"></div><div class="name">accent</div><div class="hex">#84C2A1</div></div>
+  </div>
+  <div class="row">
+    <div class="swatch"><div class="chip" style="background:#FAF6E8"></div><div class="name">fg-strong</div><div class="hex">#FAF6E8</div></div>
+    <div class="swatch"><div class="chip" style="background:#F0EBDA"></div><div class="name">fg</div><div class="hex">#F0EBDA</div></div>
+    <div class="swatch"><div class="chip" style="background:#D8D2BE"></div><div class="name">fg-muted</div><div class="hex">#D8D2BE</div></div>
+    <div class="swatch"><div class="chip" style="background:#D4BA85"></div><div class="name">gold</div><div class="hex">#D4BA85</div></div>
+    <div class="swatch"><div class="chip" style="background:#9DD9B9"></div><div class="name">accent-soft</div><div class="hex">#9DD9B9</div></div>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="demo">
+    <div class="tile">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15 8 13 13 8 15 10 10" fill="currentColor" stroke="none"/></svg>
+    </div>
+    <div>
+      <div class="title">AI Zac</div>
+      <div class="sub">Strategic coach for productized businesses</div>
+    </div>
+  </div>
+</div>
+</body></html>

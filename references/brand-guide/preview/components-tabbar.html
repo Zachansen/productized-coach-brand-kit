@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Component — Mobile Tab Bar</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--bg); font-family: var(--font-body); color: var(--fg); }
+  .stage {
+    max-width: 380px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  /* Phone-shaped frame so the bar reads in context. */
+  .phone {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(36, 55, 46, 0.04);
+  }
+  .canvas {
+    height: 130px;
+    background:
+      linear-gradient(180deg, #fafaf8 0%, #f6f5f1 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    display: flex; align-items: flex-end;
+    padding: 14px 18px;
+  }
+  .canvas .doc-title {
+    font: 600 17px/1.3 var(--font-heading);
+    color: var(--fg-strong);
+  }
+
+  /* The bar itself — Notion/Capacities flavor:
+     - hairline top border, no shadow
+     - 5 slots; center slot is a floating capture button
+     - active glyph sits in a subtle pastel tile */
+  .nav {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 8px 6px 10px;
+    background: #fff;
+  }
+  .item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 6px 0;
+    font: 500 10.5px/1 var(--font-body);
+    color: #8b8a85;
+    cursor: pointer;
+    border: 0; background: transparent;
+    transition: color 0.15s;
+  }
+  .item .glyph {
+    width: 36px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, color 0.15s;
+  }
+  .item.active { color: var(--fg-strong); font-weight: 600; }
+  .item.active .glyph {
+    background: #DCEAE0;            /* soft sage tile */
+    color: #2E5743;
+  }
+  .item:not(.active):active .glyph { background: rgba(0,0,0,0.04); }
+
+  /* Center capture / "+" button — floats above the bar */
+  .capture-wrap { display: flex; justify-content: center; }
+  .capture {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: var(--bg-dark);
+    color: var(--fg-gold);
+    border: 0; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transform: translateY(-10px);
+    box-shadow:
+      0 0 0 4px #fff,
+      0 6px 14px -4px rgba(36, 55, 46, 0.35);
+    transition: transform 0.12s ease-out;
+  }
+  .capture:hover { transform: translateY(-12px); }
+  .capture:active { transform: translateY(-8px); }
+
+  .capture-wrap .clabel {
+    position: absolute; opacity: 0;  /* visually hide; capture button is iconographic */
+  }
+
+  /* Home indicator */
+  .home-bar {
+    height: 4px; width: 120px;
+    background: #1c1c1e; opacity: 0.85;
+    border-radius: 2px;
+    margin: 2px auto 6px;
+  }
+</style></head><body>
+
+<div class="stage">
+
+  <div class="phone">
+    <div class="canvas"><div class="doc-title">Library</div></div>
+    <div class="nav">
+      <button class="item active" aria-current="page">
+        <span class="glyph">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        Home
+      </button>
+      <button class="item">
+        <span class="glyph">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </span>
+        Tools
+      </button>
+      <div class="capture-wrap">
+        <button class="capture" aria-label="New capture">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </div>
+      <button class="item">
+        <span class="glyph">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/></svg>
+        </span>
+        History
+      </button>
+      <button class="item">
+        <span class="glyph">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </span>
+        Me
+      </button>
+    </div>
+    <div class="home-bar"></div>
+  </div>
+
+</div>
+
+</body></html>

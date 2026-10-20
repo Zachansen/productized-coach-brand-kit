@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Type — Utility</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px 24px; background: var(--bg); font-family: var(--font-utility); color: var(--color-gray-700); }
+  .frame { max-width: 620px; }
+  .meta {
+    font: 600 11px/1 var(--font-body);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin: 0 0 12px;
+  }
+
+  /* Utility type — Work Sans only, neutral ink, no gold accents.
+     Used for tables, settings, billing, history. */
+  .table {
+    width: 100%; border-collapse: collapse;
+    font: 400 14px/1.45 var(--font-utility);
+    color: var(--color-gray-700);
+  }
+  .table th, .table td {
+    padding: 12px 14px; text-align: left;
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+  .table th {
+    font-weight: 600; color: var(--color-gray-500);
+    font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase;
+    border-bottom-color: var(--color-gray-200);
+  }
+  .table td.num { font-variant-numeric: tabular-nums; color: var(--color-gray-700); font-weight: 500; }
+  .table td.dim { color: var(--color-gray-400); }
+  .pill {
+    display: inline-block; font: 500 11.5px/1 var(--font-utility);
+    padding: 4px 8px; border-radius: 4px;
+    background: var(--color-gray-100); color: var(--color-gray-500);
+  }
+  .pill.ok { background:#E5EFE7; color:#2A5A3F; }
+  .pill.due { background:#F7EFD8; color:#7A6020; }
+</style></head><body>
+
+<div class="frame">
+
+  <p class="meta">Utility · Work Sans 14/1.45 · neutral ink</p>
+
+  <table class="table">
+    <thead>
+      <tr><th>Tool</th><th>Used</th><th>Last run</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Copy Studio</td>
+        <td class="num">142</td>
+        <td class="dim">Today, 9:41 AM</td>
+        <td><span class="pill ok">Active</span></td>
+      </tr>
+      <tr>
+        <td>Offer Architect</td>
+        <td class="num">38</td>
+        <td class="dim">Yesterday</td>
+        <td><span class="pill ok">Active</span></td>
+      </tr>
+      <tr>
+        <td>Audience Builder</td>
+        <td class="num">12</td>
+        <td class="dim">Apr 28</td>
+        <td><span class="pill due">Review</span></td>
+      </tr>
+      <tr>
+        <td>VSL Generator</td>
+        <td class="num">3</td>
+        <td class="dim">Mar 14</td>
+        <td><span class="pill">Idle</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body></html>

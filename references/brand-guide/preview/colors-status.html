@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Colors — Status / Semantic</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 660px; }
+  .row {
+    display: flex; align-items: stretch; gap: 0;
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .ink { width: 56px; flex: 0 0 56px; }
+  .body { flex: 1; padding: 10px 14px; background: var(--bg-row); }
+  .name { font: 600 13px/1.2 var(--font-body); color: var(--ink-on); }
+  .meta { font: 500 11px/1.3 var(--font-mono); color: var(--ink-on); opacity: 0.7; margin-top: 2px; }
+  .role { font: 400 12px/1.4 var(--font-body); color: var(--color-gray-500); margin-top: 4px; }
+</style></head><body>
+<div class="grid">
+  <div class="row" style="--bg-row:#E5EFE7; --ink-on:#2A5A3F;">
+    <div class="ink" style="background:#3F7A56"></div>
+    <div class="body">
+      <div class="name">Success</div>
+      <div class="meta">#3F7A56 · #E5EFE7</div>
+      <div class="role">Saved · uploaded · onboarded</div>
+    </div>
+  </div>
+  <div class="row" style="--bg-row:#F7EFD8; --ink-on:#7A6020;">
+    <div class="ink" style="background:#B8943C"></div>
+    <div class="body">
+      <div class="name">Warning</div>
+      <div class="meta">#B8943C · #F7EFD8</div>
+      <div class="role">Limit nearing · review needed</div>
+    </div>
+  </div>
+  <div class="row" style="--bg-row:#F4DEDA; --ink-on:#7C2E25;">
+    <div class="ink" style="background:#B6443A"></div>
+    <div class="body">
+      <div class="name">Error</div>
+      <div class="meta">#B6443A · #F4DEDA</div>
+      <div class="role">Failed · invalid · destructive</div>
+    </div>
+  </div>
+  <div class="row" style="--bg-row:#DDE6EC; --ink-on:#2E4554;">
+    <div class="ink" style="background:#466478"></div>
+    <div class="body">
+      <div class="name">Info</div>
+      <div class="meta">#466478 · #DDE6EC</div>
+      <div class="role">Tips · neutral notices</div>
+    </div>
+  </div>
+</div>
+</body></html>

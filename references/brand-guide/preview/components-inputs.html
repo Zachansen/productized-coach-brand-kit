@@ -1,0 +1,123 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Component — Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg); font-family: var(--font-body); color: var(--fg); }
+  .stack { display: flex; flex-direction: column; gap: 22px; max-width: 580px; }
+
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field-label {
+    font: 600 13px/1.2 var(--font-body);
+    color: var(--fg-strong);
+  }
+  .field-help {
+    font-size: 12.5px;
+    color: var(--fg-muted);
+    margin-top: -2px;
+  }
+  .field-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--fg-muted);
+    margin-top: 2px;
+  }
+
+  /* Bigger, more present surface — feels like a real workspace prompt. */
+  .control {
+    width: 100%; box-sizing: border-box;
+    background: #fff;
+    border: 1.5px solid color-mix(in oklab, var(--color-taupe-gray) 22%, transparent);
+    border-radius: 14px;
+    padding: 18px 20px;
+    font: 400 17px/1.5 var(--font-body);
+    color: var(--fg); /* jet black body ink — not dark-green */
+    outline: none;
+    resize: none;
+    box-shadow: 0 1px 2px rgba(36, 55, 46, 0.04);
+    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s ease-out;
+  }
+  .control::placeholder {
+    color: color-mix(in oklab, var(--color-taupe-gray) 55%, transparent);
+    font-weight: 400;
+  }
+  .control:hover { border-color: color-mix(in oklab, var(--color-taupe-gray) 38%, transparent); }
+  .control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 18%, transparent);
+    background: #fff;
+  }
+
+  /* Variant — search w/ leading icon */
+  .field.search { position: relative; }
+  .field.search .control { padding-left: 52px; padding-right: 52px; }
+  .field.search .lead, .field.search .trail {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    color: var(--fg-muted); pointer-events: none;
+  }
+  .field.search .lead { left: 18px; }
+  .field.search .trail {
+    right: 14px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    background: var(--bg);
+    padding: 3px 8px; border-radius: 6px;
+    color: var(--fg-muted);
+  }
+
+  /* Textarea variant w/ floating voice button (real product pattern). */
+  .field.composer { position: relative; }
+  .field.composer .control { min-height: 132px; padding-right: 64px; padding-bottom: 56px; }
+  .field.composer .voice {
+    position: absolute; right: 12px; bottom: 12px;
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: var(--accent); color: #fff;
+    border: 0; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s ease-out;
+  }
+  .field.composer .voice:hover { background: var(--accent-hover); }
+  .field.composer .voice:active { transform: translateY(1px); }
+
+  /* Disabled */
+  .control[disabled] {
+    background: var(--bg);
+    color: var(--fg-muted);
+    cursor: not-allowed;
+  }
+
+  /* Error */
+  .field.error .control { border-color: #B6443A; }
+  .field.error .control:focus { box-shadow: 0 0 0 4px rgba(182, 68, 58, 0.15); }
+  .field.error .field-help { color: #B6443A; }
+</style></head><body>
+
+<div class="stack">
+
+  <div class="field">
+    <label class="field-label">Business name</label>
+    <input class="control" placeholder="What's the name of your business or brand?">
+  </div>
+
+  <div class="field search">
+    <label class="field-label">Search the library</label>
+    <span class="lead" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </span>
+    <input class="control" placeholder="Search tools, prompts, history…">
+    <span class="trail">⌘K</span>
+  </div>
+
+  <div class="field composer">
+    <label class="field-label">Who do you serve?</label>
+    <span class="field-help">A single sentence is enough. Be specific — a real person, a real moment.</span>
+    <textarea class="control" autofocus placeholder="e.g. Online fitness coaches who want to escape the 1:1 grind…">Online coaching for fitness professionals who want to escape the 1:1 grind and build a productized program their clients actually finish.</textarea>
+    <button class="voice" aria-label="Voice input">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+    </button>
+    <div class="field-meta">
+      <span>Press ⌘↵ to save</span>
+      <span>132 / 280</span>
+    </div>
+  </div>
+
+</div>
+
+</body></html>

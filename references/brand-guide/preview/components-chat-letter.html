@@ -1,0 +1,255 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Component — Chat (Letter / Correspondence)</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0; padding: 28px 22px;
+    background: var(--bg);
+    font-family: var(--font-body);
+    color: var(--fg);
+  }
+  .frame {
+    max-width: 580px; margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 38px 24px;
+    position: relative;
+  }
+
+  /* Letterhead — Mad Men opening */
+  .letterhead {
+    text-align: center;
+    margin: 0 0 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+  .letterhead .mark {
+    font: 700 18px/1 var(--font-heading);
+    color: var(--color-dark-green);
+    letter-spacing: 0.02em;
+  }
+  .letterhead .sub {
+    font: 600 10px/1 var(--font-body);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-top: 8px;
+  }
+
+  /* AI letter — formatted as correspondence */
+  .letter { margin: 0 0 28px; }
+  .letter:last-child { margin-bottom: 0; }
+
+  .letter .dateline {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font: 500 12px/1 var(--font-body);
+    color: var(--fg-muted);
+    margin-bottom: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+  .letter .dateline .from {
+    font: 600 10.5px/1 var(--font-body);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-dark-green);
+  }
+
+  .letter .salutation {
+    font: 400 17px/1.4 var(--font-heading);
+    color: var(--color-dark-green);
+    margin: 0 0 14px;
+    font-style: italic;
+  }
+
+  .letter .body p {
+    font: 400 16px/1.6 var(--font-body);
+    color: var(--fg);
+    margin: 0 0 14px;
+  }
+  .letter .body p:last-child { margin-bottom: 0; }
+
+  /* Drop-cap on the FIRST paragraph — editorial signature move */
+  .letter .body p.opens::first-letter {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 3.2em;
+    line-height: 0.85;
+    float: left;
+    margin: 6px 8px 0 0;
+    color: var(--color-dark-green);
+  }
+
+  /* Inline serif emphasis */
+  .letter .body em {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-dark-green);
+  }
+
+  /* Signature block */
+  .letter .sign {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-gray-100);
+  }
+  .letter .sign .sig {
+    font: 700 18px/1 var(--font-heading);
+    color: var(--color-dark-green);
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  .letter .sign .role {
+    font: 500 11px/1 var(--font-body);
+    color: var(--fg-muted);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* User reply — much more compact, indented, italic body, gold accent */
+  .reply {
+    margin: 24px 0 28px;
+    padding: 18px 22px;
+    background: var(--color-cream);
+    border-radius: 10px;
+    border-left: 3px solid var(--color-gold);
+  }
+  .reply .from {
+    font: 600 10.5px/1 var(--font-body);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 8px;
+  }
+  .reply p {
+    font: 400 15px/1.55 var(--font-heading);
+    font-style: italic;
+    color: var(--color-dark-green);
+    margin: 0;
+  }
+
+  /* Section break between letters — vintage diamond ornament */
+  .ornament {
+    text-align: center;
+    color: var(--color-gold);
+    margin: 8px 0 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .ornament .line { flex: 1; height: 1px; background: var(--color-gold); opacity: 0.4; }
+  .ornament .d {
+    width: 5px; height: 5px;
+    background: var(--color-gold);
+    transform: rotate(45deg);
+  }
+
+  /* Composer — formatted as "compose your reply" */
+  .composer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-gray-100);
+  }
+  .composer .label {
+    font: 600 10.5px/1 var(--font-body);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 10px;
+  }
+  .composer .row {
+    display: flex; align-items: flex-end; gap: 10px;
+  }
+  .composer .field {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border-input);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font: 400 15px/1.4 var(--font-heading);
+    font-style: italic;
+    color: var(--fg-muted);
+    min-height: 22px;
+  }
+  .composer .send {
+    height: 44px; padding: 0 18px;
+    background: var(--color-dark-green);
+    color: #fff;
+    font: 600 12.5px/1 var(--font-body);
+    letter-spacing: 0.06em;
+    border: 0; border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.15s ease-out;
+  }
+  .composer .send:hover { background: var(--accent); }
+</style></head><body>
+
+<div class="frame">
+
+  <div class="letterhead">
+    <div class="mark">AI Zac</div>
+    <div class="sub">Strategic Coach &middot; Productized Coach</div>
+  </div>
+
+  <!-- AI letter -->
+  <article class="letter">
+    <div class="dateline">
+      <span class="from">From AI Zac</span>
+      <span>Tuesday, May 5 &middot; 9:41 AM</span>
+    </div>
+
+    <p class="salutation">Hey Zach,</p>
+
+    <div class="body">
+      <p class="opens">You said buyers like the idea but no one's pulling the trigger &mdash; that's almost always a <em>promise</em> problem, not a price problem. If they like it but won't buy, the offer reads as interesting, not inevitable.</p>
+
+      <p>Here's what I'd try this week. Tighten the North Star Promise so it names a specific outcome for a specific person on a specific timeline. Something like: <em>"In 90 days, productized coaches doing $5K&ndash;$15K months will install one offer that compounds to $30K/mo &mdash; without 1:1 calls or paid ads."</em></p>
+
+      <p>Then strip your sales page back to that one sentence above the fold. Everything else &mdash; mechanism, proof, FAQ &mdash; supports it. If it can't, cut it.</p>
+    </div>
+
+    <div class="sign">
+      <div class="sig">&mdash; Zac</div>
+      <div class="role">Your strategic coach</div>
+    </div>
+  </article>
+
+  <!-- User reply -->
+  <div class="reply">
+    <div class="from">You wrote back</div>
+    <p>Okay &mdash; that promise feels too narrow though. What if I serve coaches and consultants both?</p>
+  </div>
+
+  <div class="ornament">
+    <span class="line"></span>
+    <span class="d"></span>
+    <span class="line"></span>
+  </div>
+
+  <!-- Second AI letter (shorter follow-up) -->
+  <article class="letter">
+    <div class="dateline">
+      <span class="from">From AI Zac</span>
+      <span>9:43 AM</span>
+    </div>
+
+    <div class="body">
+      <p>One avatar, one promise. Always. The moment you serve "coaches and consultants" you're writing for nobody &mdash; and "nobody" doesn't pull a credit card out.</p>
+
+      <p>Pick the buyer you'd build this for if you could only have one. We can always expand later.</p>
+    </div>
+
+    <div class="sign">
+      <div class="sig">&mdash; Z.</div>
+    </div>
+  </article>
+
+  <!-- Composer -->
+  <div class="composer">
+    <div class="label">Compose your reply</div>
+    <div class="row">
+      <div class="field">Type your response&hellip;</div>
+      <button class="send">Send reply</button>
+    </div>
+  </div>
+
+</div>
+
+</body></html>

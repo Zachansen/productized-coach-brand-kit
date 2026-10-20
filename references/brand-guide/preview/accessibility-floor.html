@@ -1,0 +1,97 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Accessibility — Floor</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px 24px; background: var(--bg); font-family: var(--font-body); color: var(--fg-strong); }
+  .frame { max-width: 660px; }
+  .group { margin-bottom: 22px; }
+  .group:last-child { margin-bottom: 0; }
+  h3 {
+    font: 600 11px/1 var(--font-body);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-gray-500); margin: 0 0 10px;
+  }
+
+  /* CONTRAST GRID */
+  .contrast { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .pair {
+    border-radius: 9px; padding: 12px 10px;
+    font: 600 13px/1.2 var(--font-heading);
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .pair small {
+    display: block; margin-top: 6px;
+    font: 500 10.5px/1 var(--font-mono);
+    opacity: 0.75;
+  }
+
+  /* TAP TARGETS */
+  .tap-row { display: flex; align-items: flex-end; gap: 16px; }
+  .tap {
+    background: var(--bg-dark); color: var(--fg-on-dark);
+    font: 600 12px/1 var(--font-body);
+    border-radius: 7px; border: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tap.bad  { width: 28px; height: 28px; }
+  .tap.min  { width: 44px; height: 44px; }
+  .tap.good { width: 56px; height: 56px; padding: 0 18px; }
+  .tap-meta { font: 500 11px/1.3 var(--font-mono); color: var(--color-gray-500); margin-top: 6px; text-align: center; }
+  .tap-fail { color: var(--color-error); }
+  .tap-pass { color: var(--color-success); }
+
+  /* FOCUS RING */
+  .focus-row { display: flex; gap: 10px; }
+  .fbtn {
+    font: 600 12.5px/1 var(--font-body);
+    padding: 10px 14px; border-radius: 7px;
+    background: var(--bg-cream); border: 1px solid var(--border-input);
+    color: var(--bg-dark);
+  }
+  .fbtn.active {
+    outline: 0;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-gold) 35%, transparent);
+    border-color: var(--color-gold);
+  }
+</style></head><body>
+
+<div class="frame">
+
+  <div class="group">
+    <h3>Contrast (WCAG AA, normal text ≥ 4.5)</h3>
+    <div class="contrast">
+      <div class="pair" style="background:#FAF6E8; color:#32312E;">Aa<small>14.6 · pass</small></div>
+      <div class="pair" style="background:#32312E; color:#FAF6E8;">Aa<small>14.6 · pass</small></div>
+      <div class="pair" style="background:#32312E; color:#D4BA85;">Aa<small>7.1 · pass</small></div>
+      <div class="pair" style="background:#FAF6E8; color:#8E8C86;">Aa<small>3.4 · meta only</small></div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h3>Tap targets (mobile minimum 44 × 44)</h3>
+    <div class="tap-row">
+      <div>
+        <button class="tap bad">×</button>
+        <div class="tap-meta tap-fail">28 · fail</div>
+      </div>
+      <div>
+        <button class="tap min">OK</button>
+        <div class="tap-meta tap-pass">44 · floor</div>
+      </div>
+      <div>
+        <button class="tap good">Continue</button>
+        <div class="tap-meta tap-pass">56 · preferred</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h3>Focus ring (keyboard)</h3>
+    <div class="focus-row">
+      <button class="fbtn">Default</button>
+      <button class="fbtn active">Focused</button>
+    </div>
+  </div>
+
+</div>
+</body></html>

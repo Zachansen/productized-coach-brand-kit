@@ -1,0 +1,183 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Component — Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg); font-family: var(--font-body); color: var(--fg); }
+  .options { display: flex; flex-direction: column; gap: 16px; max-width: 660px; }
+  .opt {
+    background: #fff; border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .opt h3 {
+    margin: 0 0 2px;
+    font: 600 12px/1 var(--font-body);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .opt h3 b { color: var(--color-gold); font-weight: 600; }
+  .opt .caption { font-size: 12px; color: var(--fg-muted); margin: 0 0 14px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+  /* ---------- Shared base ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 44px; padding: 0 22px;
+    font: 600 14px/1 var(--font-body);
+    border-radius: 12px; border: 0;
+    cursor: pointer; transition: all 0.18s ease-out;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { display: block; }
+
+  /* ============ A · Editorial Refined ============
+     Tightened version of current. Real contrast between
+     primary (deep green), secondary (bone w/ thin gold rule),
+     ghost (gold-underlined link). */
+  .a-primary {
+    background: var(--bg-dark); color: var(--fg-gold);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 1px 2px rgba(36,55,46,0.18);
+  }
+  .a-primary:hover { background: #1f3329; }
+  .a-secondary {
+    background: var(--color-cream); color: var(--fg-strong);
+    border: 1px solid color-mix(in oklab, var(--color-gold) 40%, transparent);
+  }
+  .a-secondary:hover { border-color: var(--color-gold); background: #fff; }
+  .a-ghost {
+    background: transparent; color: var(--fg);
+    padding: 0 4px; min-height: 36px;
+    border-radius: 0; box-shadow: none;
+    border-bottom: 1.5px solid var(--color-gold);
+  }
+  .a-ghost:hover { color: var(--fg-strong); border-bottom-color: var(--accent); }
+
+  /* ============ B · Capsule + Icon Lozenge ============
+     Pill-shaped, bigger, more confident.
+     Primary uses spring-green accent on dark.
+     Icon button is its own gold lozenge. */
+  .b-primary {
+    background: var(--accent); color: #fff;
+    border-radius: 999px; padding: 0 26px; min-height: 48px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 4px 14px -6px rgba(83,142,103,0.6);
+  }
+  .b-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .b-secondary {
+    background: #fff; color: var(--fg-strong);
+    border: 1.5px solid var(--border); border-radius: 999px;
+    padding: 0 24px; min-height: 48px;
+  }
+  .b-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .b-icon {
+    background: linear-gradient(180deg, #d6b35a 0%, #b8943c 100%);
+    color: var(--bg-dark);
+    border-radius: 999px; padding: 0 18px; min-height: 48px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 2px 6px -2px rgba(184,148,60,0.5);
+  }
+  .b-icon:hover { filter: brightness(1.04); }
+
+  /* ============ C · Stamped + Gold Accent ============
+     A bit weighty / printed feel.
+     Primary = dark green w/ gold underline rule (literal "stamp").
+     Secondary = bone w/ inset gold corner notch via gradient border. */
+  .c-primary {
+    position: relative;
+    background: var(--bg-dark); color: #fff;
+    padding: 0 22px 4px; min-height: 48px;
+    border-radius: 8px;
+  }
+  .c-primary::after {
+    content: ''; position: absolute; left: 14px; right: 14px; bottom: 6px;
+    height: 2px; background: var(--color-gold); border-radius: 2px;
+  }
+  .c-primary:hover { background: #1f3329; }
+  .c-secondary {
+    background: #fff; color: var(--fg-strong);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 0 22px;
+    box-shadow: 2px 2px 0 0 var(--color-gold);
+  }
+  .c-secondary:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 0 var(--color-gold); }
+  .c-tag {
+    background: color-mix(in oklab, var(--color-gold) 14%, transparent);
+    color: var(--bg-dark);
+    border: 1px dashed color-mix(in oklab, var(--color-gold) 50%, transparent);
+    border-radius: 8px; padding: 0 16px; min-height: 40px;
+    font-weight: 600;
+  }
+  .c-tag:hover { background: color-mix(in oklab, var(--color-gold) 22%, transparent); }
+
+  /* ============ D · Display Serif ============
+     Wordmark feel — Libre Baskerville on the primary.
+     Pairs the brand display face with a light ink rule.
+     Best for hero CTAs, marketing, deck slides. */
+  .d-primary {
+    background: var(--bg-dark); color: #fff;
+    font: 600 16px/1 var(--font-heading);
+    letter-spacing: 0.005em;
+    padding: 0 28px; min-height: 52px;
+    border-radius: 4px;
+  }
+  .d-primary:hover { background: #1f3329; }
+  .d-primary .gold-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-gold); margin-right: 4px; }
+  .d-secondary {
+    background: transparent; color: var(--fg-strong);
+    font: 600 16px/1 var(--font-heading);
+    padding: 0 4px; min-height: 52px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--fg-strong);
+  }
+  .d-secondary:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .d-link {
+    background: transparent; color: var(--fg-muted);
+    font: 500 13px/1 var(--font-body);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0 4px; min-height: 36px; border-radius: 0;
+  }
+  .d-link:hover { color: var(--color-gold); }
+</style></head><body>
+
+<div class="options">
+
+  <div class="opt">
+    <h3>Option <b>A</b> · Editorial Refined</h3>
+    <p class="caption">Dark-green primary, cream secondary with a thin gold rule, gold-underlined ghost link.</p>
+    <div class="row">
+      <button class="btn a-primary">Save my DNA<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>
+      <button class="btn a-secondary">Sign in</button>
+      <button class="btn a-ghost">Start over</button>
+    </div>
+  </div>
+
+  <div class="opt">
+    <h3>Option <b>B</b> · Capsule + Icon Lozenge</h3>
+    <p class="caption">Spring-green pill primary, white pill secondary, brushed-gold icon lozenge.</p>
+    <div class="row">
+      <button class="btn b-primary">Get started<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      <button class="btn b-secondary">Sign in</button>
+      <button class="btn b-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>Generate</button>
+    </div>
+  </div>
+
+  <div class="opt">
+    <h3>Option <b>C</b> · Stamped + Gold Accent</h3>
+    <p class="caption">Square corners, gold underline rule on primary, offset-gold drop on secondary, dashed-gold tag.</p>
+    <div class="row">
+      <button class="btn c-primary">Save my DNA</button>
+      <button class="btn c-secondary">Sign in</button>
+      <button class="btn c-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New tool</button>
+    </div>
+  </div>
+
+  <div class="opt">
+    <h3>Option <b>D</b> · Display Serif</h3>
+    <p class="caption">Libre Baskerville wordmark CTA with a gold dot. Underline secondary. Tracked-out caps link.</p>
+    <div class="row">
+      <button class="btn d-primary"><span class="gold-dot"></span>Build your library</button>
+      <button class="btn d-secondary">See the tools</button>
+      <button class="btn d-link">Read the manifesto →</button>
+    </div>
+  </div>
+
+</div>
+
+</body></html>
